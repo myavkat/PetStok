@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetStok", "PetStok\PetStok.csproj", "{FB961991-642F-454D-AB4C-2E0323ED578C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB961991-642F-454D-AB4C-2E0323ED578C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB961991-642F-454D-AB4C-2E0323ED578C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB961991-642F-454D-AB4C-2E0323ED578C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB961991-642F-454D-AB4C-2E0323ED578C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {209A22FA-410C-42FA-BD68-0F4FF92F2360}
+	EndGlobalSection
+EndGlobal
