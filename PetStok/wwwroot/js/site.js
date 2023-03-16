@@ -50,12 +50,12 @@ document.querySelector(".datatable-top").style.display = "none";
 
 //kaydedilen değişkenlerle arama fonksiyonu
 function search() {
-    dataTable.multiSearch([{ term: seciliAd, columns: [2] }, { term: aranacakBarkod, columns: [0] }, { term: aranacakTarih, columns: [7] }]);
+    dataTable.multiSearch([{ term: seciliAd, columns: [2] }, /*{ term: aranacakBarkod, columns: [0] },*/ { term: aranacakTarih, columns: [7] }]);
     if (dataTable.totalPages == 0) {
         var toast = document.querySelector("#liveToast");
         toast.classList.remove("hide");
         toast.classList.add("show");
-        dataTable.multiSearch([{ term: seciliAd, columns: [2] }, { term: aranacakBarkod, columns: [0] }, { term: "-", columns: [7] }]);
+        dataTable.multiSearch([{ term: seciliAd, columns: [2] }, /*{ term: aranacakBarkod, columns: [0] },*/ { term: "-", columns: [7] }]);
         setTimeout(function () {
             toast.classList.remove("show");
             toast.classList.add("hide");

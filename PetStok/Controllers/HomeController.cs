@@ -25,25 +25,29 @@ namespace PetStok.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            Console.WriteLine("aa" + DateTime.Now.ToLongTimeString());
             List<ProductDTO> productDTOs = new();
-            productDTOs = GetProducts("");
+            productDTOs = GetProducts("0000000000000");
             ViewBag.Date = DateTime.Now;
             ViewBag.productDTOs = productDTOs;
             var adlar = productDTOs.DistinctBy(p => p.ad).Select(p => p.ad);
             ViewBag.adlar = adlar;
-            ViewBag.ad = adlar.First();
+            ViewBag.ad = adlar.FirstOrDefault() == null ? "" : adlar.FirstOrDefault();
+            Console.WriteLine("bb" + DateTime.Now.ToLongTimeString());
+            ViewBag.barkod = "";
             return View();
         }
         [HttpPost]
-        public IActionResult Guncelle()
+        public IActionResult Guncelle(string barkod)
         {
             List<ProductDTO> productDTOs = new();
-            productDTOs = GetProducts("Kaydet");
+            productDTOs = GetProducts(barkod);
             ViewBag.Date = DateTime.Now;
             ViewBag.productDTOs = productDTOs;
             var adlar = productDTOs.DistinctBy(p => p.ad).Select(p => p.ad);
             ViewBag.adlar = adlar;
             ViewBag.ad = adlar.First();
+            ViewBag.barkod = barkod;
             return View("Index");
         }
         public IActionResult Privacy()
@@ -66,7 +70,7 @@ namespace PetStok.Controllers
             client.BaseAddress = new Uri("http://193.53.103.155:8090");
             client.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("text/plain"));
-            HttpResponseMessage response = client.GetAsync("/api/Genel/getUrunsdetay" + text).Result;
+            HttpResponseMessage response = client.GetAsync("/api/Genel/getUrunsdetay/" + text).Result;
             List<Product> products = new();
             var productDTOs = new List<ProductDTO>();
             if (response.IsSuccessStatusCode)
@@ -105,7 +109,7 @@ namespace PetStok.Controllers
                         url = product.url,
                         urunAd = product.urunAd,
                         oncekiStok = oncekiKayit,
-                        sonrakiStok = new StokKaydi { stok=product.stok,tarih=product.tarih.HasValue?(DateTime)product.tarih:new DateTime()}
+                        sonrakiStok = new StokKaydi { stok = product.stok, tarih = product.tarih.HasValue ? (DateTime)product.tarih : new DateTime() }
                     });
                 }
                 foreach (StokKaydi kayit in kayitlar)

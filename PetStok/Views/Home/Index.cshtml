@@ -21,10 +21,6 @@
         </div>
         @*Filtreleme Şeyleri*@
         <div class="row">
-            <div class="form-floating col-3 my-auto py-auto">
-                @*Barkod girişi*@
-                <input class="form-control form-control-dark" type="text" for="Barkod" placeholder="Barkod Ara" id="barkodArama" onkeyup="barkodAra()">
-            </div>
             @*Site Seçme*@
             <div class="col-3 form-floating my-auto py-auto">
                 <select class="form-select" id="adSelect" for="SiteAdi" onchange="adSec()">
@@ -40,11 +36,17 @@
             @*Tarih Seçme*@
             <div class="form-floating col-3 my-auto py-auto">
                 <input class="h-75 form-control" type="date" for="date" onchange="tarihSec()" id="tarihSelector" name="date" value=@ViewBag.Date.ToString("yyyy-MM-dd")>
-            </div><div class="col-3">
-                <form asp-for="Home" asp-action="Guncelle" method="post">
-                    <button type="button" class="btn btn-primary" onclick="this.form.submit()">Verileri İndir ve Güncelle</button>
-                </form>
             </div>
+            <form asp-for="Home" asp-action="Guncelle" method="post">
+                <div class="form-floating col-6 my-auto py-auto">
+                    @*Barkod girişi*@
+                    <input class="form-control form-control-dark" type="text" for="barkod" placeholder="Barkod Ara" name="barkod" id="barkodAra" value=@ViewBag.barkod >
+                    <input type="submit" hidden/>
+                    <button type="button" class="btn btn-primary" onclick="this.form.submit()">Barkod Ara</button>
+                </div>
+
+            </form>
+
         </div>
         <div class="row table-responsive text-start">
             <table class="table table-striped table-sm" id="productTable">
