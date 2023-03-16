@@ -58,15 +58,15 @@ namespace PetStok.Controllers
         }
         public List<ProductDTO> GetProducts(string text)
         {
-            // //Offline veri ile çalışma kodu
-            //var jsonPath=@"C:\Users\mehme\Desktop\petresponse.json";
+            ////Offline veri ile çalışma kodu
+            //var jsonPath = @"C:\Users\mehme\Desktop\petresponse.json";
             //var myJsonString = System.IO.File.ReadAllText(jsonPath);
             //var products = JsonSerializer.Deserialize<List<Product>>(myJsonString);
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://193.53.103.155:8090");
             client.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("text/plain"));
-            HttpResponseMessage response = client.GetAsync("/api/Genel/getUrunsdetay"+ text).Result;
+            HttpResponseMessage response = client.GetAsync("/api/Genel/getUrunsdetay" + text).Result;
             List<Product> products = new();
             var productDTOs = new List<ProductDTO>();
             if (response.IsSuccessStatusCode)
@@ -91,6 +91,22 @@ namespace PetStok.Controllers
                 if (product.stokList != null)
                 {
                     kayitlar = JsonSerializer.Deserialize<List<StokKaydi>>(product.stokList);
+                }
+                else
+                {
+                    productDTOs.Add(new ProductDTO
+                    {
+                        ad = product.ad,
+                        barkod = product.barkod,
+                        fiyat = product.fiyat,
+                        id = product.id,
+                        stok = product.stok,
+                        tarih = product.tarih,
+                        url = product.url,
+                        urunAd = product.urunAd,
+                        oncekiStok = oncekiKayit,
+                        sonrakiStok = new StokKaydi { stok=product.stok,tarih=product.tarih.HasValue?(DateTime)product.tarih:new DateTime()}
+                    });
                 }
                 foreach (StokKaydi kayit in kayitlar)
                 {

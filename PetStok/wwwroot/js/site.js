@@ -30,13 +30,20 @@ function tarihSec() {
     search();
 }
 
+var icerik = document.querySelector("#style-div");
+var yukleniyor = document.querySelector("#yukleniyor");
+
 //tabloyu simpledatatables kütüphanesi tablosuna çevirir == hızlı ve takılmadan arama için
 const myTable = document.querySelector("#productTable");
 const dataTable = new simpleDatatables.DataTable(myTable, {
     sortable: false,
     perPage: 25
 });
-dataTable.on("datatable.init", search());
+dataTable.on("datatable.init", function () {
+    yukleniyor.style.display = "none";
+    icerik.style = "";
+    search();
+});
 //kütüphane tablosunun arama kutusunu kaldırır (sıkıntı çıkartıyordu çoklu aramada)
 document.querySelector(".datatable-top").style.display = "none";
 
@@ -44,11 +51,15 @@ document.querySelector(".datatable-top").style.display = "none";
 //kaydedilen değişkenlerle arama fonksiyonu
 function search() {
     dataTable.multiSearch([{ term: seciliAd, columns: [2] }, { term: aranacakBarkod, columns: [0] }, { term: aranacakTarih, columns: [7] }]);
-    if (dataTable.totalPages==0) {
+    if (dataTable.totalPages == 0) {
+        var toast = document.querySelector("#liveToast");
+        toast.classList.remove("hide");
+        toast.classList.add("show");
         dataTable.multiSearch([{ term: seciliAd, columns: [2] }, { term: aranacakBarkod, columns: [0] }, { term: "-", columns: [7] }]);
-        var toast = document.createElement("div");
-        toast.innerHTML = '<div aria-live="polite" aria-atomic="true" class="bg - dark position - relative bd - example - toasts">            < div class="toast-container position-absolute p-3" id = "toastPlacement" >                <div class="toast top-0 end-0">                    <div class="toast-header">                        <img src="..." class="rounded me-2" alt="...">                            <strong class="me-auto">Bootstrap</strong>                            <small>11 mins ago</small>                    </div>                    <div class="toast-body">                        Hello, world! This is a toast message.                    </div>                </div>  </div ></div >'
-        document.body.appendChild(toast);
+        setTimeout(function () {
+            toast.classList.remove("show");
+            toast.classList.add("hide");
+        }, 5000);
     }
 }
 
