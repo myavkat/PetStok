@@ -90,7 +90,7 @@ namespace PetStok.Controllers
 
             foreach (var product in products)
             {
-                // rambo
+                // rambo 22
                 StokKaydi oncekiKayit = new();
                 List<StokKaydi> kayitlar = new();
                 if (product.stokList != null)
