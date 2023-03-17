@@ -50,7 +50,17 @@ namespace PetStok.Controllers
             ViewBag.barkod = barkod;
             return View("Index");
         }
-        public IActionResult Privacy()
+
+        public async Task<IActionResult> IndexBas()
+        {
+            var uri = "http://193.53.103.155:8090/api/Genel/indexBas";
+            using (HttpClient client = new())
+            {
+                var response = await client.GetAsync(uri);
+                return View(await response.Content.ReadAsStringAsync());
+            }
+        }
+            public IActionResult Privacy()
         {
             return View();
         }

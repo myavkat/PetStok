@@ -1,9 +1,4 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-
-//Site adlarını çeker ve listeye atar, 1. ad seçili olarak gelir
+﻿//Site adlarını çeker ve listeye atar, 1. ad seçili olarak gelir
 var adSelect = document.querySelector("#adSelect");
 let ops = adSelect.options;
 let adlar = [];
@@ -28,6 +23,10 @@ var aranacakTarih = tarihInput.value;
 function tarihSec() {
     aranacakTarih = tarihInput.value;
     search();
+}
+document.querySelector("#indexBas").addEventListener("click", indexBas);
+function indexBas() {
+    console.log("istek atacaksın burada")
 }
 
 var icerik = document.querySelector("#style-div");

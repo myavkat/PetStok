@@ -40,12 +40,14 @@
             <form asp-for="Home" asp-action="Guncelle" method="post">
                 <div class="form-floating col-6 my-auto py-auto">
                     @*Barkod girişi*@
-                    <input class="form-control form-control-dark" type="text" for="barkod" placeholder="Barkod Ara" name="barkod" id="barkodAra" value=@ViewBag.barkod >
-                    <input type="submit" hidden/>
+                    <input class="form-control form-control-dark" type="text" for="barkod" placeholder="Barkod Ara" name="barkod" id="barkodAra" value=@ViewBag.barkod>
+                    <input type="submit" hidden />
                     <button type="button" class="btn btn-primary" onclick="this.form.submit()">Barkod Ara</button>
                 </div>
 
             </form>
+            
+                <button type="button" id="indexBas" class="btn btn-primary">Index Bas</button>
 
         </div>
         <div class="row table-responsive text-start">
