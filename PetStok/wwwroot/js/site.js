@@ -26,9 +26,24 @@ function tarihSec() {
 }
 document.querySelector("#indexBas").addEventListener("click", indexBas);
 function indexBas() {
-    console.log("istek atacaksın burada")
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+    };
+    fetch("http://193.53.103.155:8090/api/Genel/indexBas", requestOptions)
+        .then(response => response.text())
+        .then(basariliToast())
+        .catch(error => console.log('error', error));
 }
-
+function basariliToast() {
+    setTimeout(function () {
+        var toast = document.querySelector("#indexToast");
+        toast.classList.remove("hide");
+        toast.classList.add("show");
+        toast.classList.remove("show");
+        toast.classList.add("hide");
+    }, 5000);
+}
 var icerik = document.querySelector("#style-div");
 var yukleniyor = document.querySelector("#yukleniyor");
 
@@ -40,7 +55,6 @@ const dataTable = new simpleDatatables.DataTable(myTable, {
 });
 dataTable.on("datatable.init", function () {
     yukleniyor.style.display = "none";
-    icerik.style = "";
     search();
 });
 //kütüphane tablosunun arama kutusunu kaldırır (sıkıntı çıkartıyordu çoklu aramada)

@@ -25,7 +25,6 @@ namespace PetStok.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            Console.WriteLine("aa" + DateTime.Now.ToLongTimeString());
             List<ProductDTO> productDTOs = new();
             productDTOs = GetProducts("0000000000000");
             ViewBag.Date = DateTime.Now;
@@ -33,7 +32,6 @@ namespace PetStok.Controllers
             var adlar = productDTOs.DistinctBy(p => p.ad).Select(p => p.ad);
             ViewBag.adlar = adlar;
             ViewBag.ad = adlar.FirstOrDefault() == null ? "" : adlar.FirstOrDefault();
-            Console.WriteLine("bb" + DateTime.Now.ToLongTimeString());
             ViewBag.barkod = "";
             return View();
         }
@@ -51,16 +49,7 @@ namespace PetStok.Controllers
             return View("Index");
         }
 
-        public async Task<IActionResult> IndexBas()
-        {
-            var uri = "http://193.53.103.155:8090/api/Genel/indexBas";
-            using (HttpClient client = new())
-            {
-                var response = await client.GetAsync(uri);
-                return View(await response.Content.ReadAsStringAsync());
-            }
-        }
-            public IActionResult Privacy()
+        public IActionResult Privacy()
         {
             return View();
         }
