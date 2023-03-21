@@ -41,11 +41,11 @@
                 <div class="form-check">
                     @if (ViewBag.populer == true)
                     {
-                        <input class="form-check-input" type="checkbox" name="populer" id="populer" checked>
+                        <input class="form-check-input" type="checkbox" name="populer" id="populer" checked value="true">
                     }
                     else
                     {
-                        <input class="form-check-input" type="checkbox" name="populer" id="populer" unchecked>
+                        <input class="form-check-input" type="checkbox" name="populer" id="populer" unchecked value="true">
                     }
                     <label class="form-check-label" for="populer">Popüler Ürünler</label>
                 </div>
@@ -54,11 +54,11 @@
                 <div class="form-check mt-2">
                     @if (ViewBag.json == true)
                     {
-                        <input class="form-check-input" type="checkbox" name="json" id="jsonLink" checked>
+                        <input class="form-check-input" type="checkbox" name="json" id="jsonLink" checked value="true">
                     }
                     else
                     {
-                        <input class="form-check-input" type="checkbox" name="json" id="jsonLink" unchecked>
+                        <input class="form-check-input" type="checkbox" name="json" id="jsonLink" unchecked value="true">
 
                     }
                     <label class="form-check-label" for="jsonLink">Json Link Ürünler</label>
@@ -116,14 +116,14 @@
                 Sayfalar:
                 @for (int i = ViewBag.page - 3; i < ViewBag.page + 3; i++)
                 {
-                    if (i < 0)
+                    if (i < 0 || i > ViewBag.totalPage)
                     {
                         continue;
                     }
                     <button value=@(i) name="page" class="btn btn-secondary btn-sm">@(i + 1)</button>
                 }
                 ...
-                <button value=@(ViewBag.totalPage-1) name="page" class="btn btn-secondary btn-sm">@ViewBag.totalPage</button>
+                <button value=@ViewBag.totalPage name="page" class="btn btn-secondary btn-sm">@(ViewBag.totalPage+1)</button>
             </div>
         </div>
     </div>

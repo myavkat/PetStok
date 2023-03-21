@@ -20,8 +20,8 @@ namespace PetStok.Controllers
         {
             basTarih ??= new DateTime().AddYears(1899);
             bitTarih ??= new DateTime().AddYears(2999);
-            ViewBag.json = json; ViewBag.populer = populer; ViewBag.ad = ad; ViewBag.basTarih = basTarih.Value.ToString("yyyy-MM-dd"); ViewBag.bitTarih = bitTarih.Value.ToString("yyyy-MM-dd"); ViewBag.barkod = barkod;
             barkod ??= "";
+            ViewBag.json = json; ViewBag.populer = populer; ViewBag.ad = ad; ViewBag.basTarih = basTarih.Value.ToString("yyyy-MM-dd"); ViewBag.bitTarih = bitTarih.Value.ToString("yyyy-MM-dd"); ViewBag.barkod = barkod;
             postModel contnt = new postModel { basTarih = basTarih.Value.ToString("yyyy-MM-dd"), bitTarih = bitTarih.Value.ToString("yyyy-MM-dd"), json = json, populer = populer, ad = ad, page = page, barkod = barkod };
             var jsonStr = JsonSerializer.Serialize(contnt);
             StringContent stringContent = new StringContent(jsonStr, Encoding.UTF8, "application/json");
@@ -41,9 +41,10 @@ namespace PetStok.Controllers
                 }
             }
             ViewBag.page = page;
+            ViewBag.totalPage = 0;
             if (ViewBag.detayProducts.Count == 0)
             {
-                ViewBag.totalPage = 5;
+                ViewBag.totalPage = 0;
             }
             else
             {
