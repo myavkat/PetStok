@@ -73,25 +73,39 @@
         <div class="row mt-2">
             <div class="ms-auto">
                 Sayfalar:
-                @for (int i = ViewBag.page - 3; i < ViewBag.page + 3; i++)
+                @{
+                    int last = 0;
+                }
+                @if (ViewBag.page>3)
                 {
-                    if (i < 0 || i > ViewBag.totalPage)
+                    <div class="d-inline">
+                        <button value=0 name="page" class="btn btn-secondary btn-sm d-inline ms-1">1</button>
+                        <p class="d-inline">...</p>
+                    </div>
+                }
+                @for (int i = ViewBag.page - 2; i < ViewBag.page + 3; i++)
+                {
+                    if (i < 0 || i>ViewBag.totalPage)
                     {
                         continue;
                     }
                     if (ViewBag.page == i)
                     {
-                        <button value=@(i) name="page" class="btn btn-primary btn-sm">
-                            @(i + 1)
-                        </button>
+                        <button value=@(i) name="page" class="btn btn-primary btn-sm">@(i + 1)</button>
                     }
                     else
                     {
                         <button value=@(i) name="page" class="btn btn-secondary btn-sm">@(i + 1)</button>
                     }
+                    last = i;
                 }
-                ...
-                <button value=@ViewBag.totalPage name="page" class="btn btn-secondary btn-sm">@(ViewBag.totalPage + 1)</button>
+                @if (last < ViewBag.totalPage)
+                {
+                    <div class="d-inline">
+                        <p class="d-inline">...</p>
+                        <button value=@ViewBag.totalPage name="page" class="btn btn-secondary btn-sm d-inline ms-1">@(ViewBag.totalPage + 1)</button>
+                    </div>
+                }
             </div>
         </div>
         <div class="row table-responsive text-start mt-2">
