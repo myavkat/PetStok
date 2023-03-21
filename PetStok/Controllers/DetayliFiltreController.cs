@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace PetStok.Controllers
 {
-    public class DetayliFiltre : Controller
+    public class DetayliFiltreController : Controller
     {
         public IActionResult Index()
         {
