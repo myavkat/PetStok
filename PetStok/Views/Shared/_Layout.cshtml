@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/PetStok.styles.css" asp-append-version="true" />
+    <link href="~/css/sortable.css" rel="stylesheet" />
 </head>
 <body>
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -14,11 +15,11 @@
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        @*<div class="navbar-nav">
+        <div class="navbar-nav">
         <div class="nav-item text-nowrap">
-        <a class="nav-link px-3" href="#">Sign out</a>
+        <a class="nav-link px-3 text-white" href="/DetayliFiltre/Index">Detaylı Filtre</a>
         </div>
-        </div>*@
+        </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -36,6 +37,7 @@
     <script src="~/lib/simpleDatatables/simple-datatables@latest.js" type="text/javascript"></script>
     <link href="~/lib/simpleDatatables/style.css" rel="stylesheet" type="text/css">
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/sortable.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

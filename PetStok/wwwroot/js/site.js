@@ -9,7 +9,7 @@ var seciliAd = adlar[0];
 //barkod ve ad girişlerinin değişken kaydetme fonksiyonları
 function adSec() {
     var selectedValue = adSelect.options[adSelect.selectedIndex].value;
-    seciliAd = selectedValue.toUpperCase();
+    seciliAd = selectedValue;
     search();
 }
 var aranacakBarkod = "";
@@ -75,4 +75,3 @@ function search() {
         }, 5000);
     }
 }
-
