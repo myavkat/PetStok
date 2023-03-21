@@ -16,7 +16,14 @@
                     <option value="hepsi">Hepsi</option>
                     @foreach (var ad in ViewBag.adlar)
                     {
-                        <option value=@ad.ad>@ad.ad</option>
+                        @if (ad.ad == ViewBag.ad)
+                        {
+                            <option selected value=@ad.ad>@ad.ad</option>
+                        }
+                        else
+                        {
+                            <option value=@ad.ad>@ad.ad</option>
+                        }
                     }
                 </select>@*Barkod*@
                 <label for="barkodAra" class="mt-2">Barkod Ara</label>
@@ -25,20 +32,35 @@
             <div class="col-3">
                 @*Tarih*@
                 <label class="form-control-label" for="basTarih">Başlangıç Tarihi</label>
-                <input class="form-control" type="date" name="basTarih" id="basTarih">
+                <input class="form-control" type="date" name="basTarih" id="basTarih" value=@ViewBag.basTarih />
                 <label class="form-control-label mt-2" for="bitTarih">Bitiş Tarihi</label>
-                <input class="form-control" type="date" name="bitTarih" id="bitTarih">
+                <input class="form-control" type="date" name="bitTarih" id="bitTarih" value=@ViewBag.bitTarih>
             </div>
             <div class="col-6 mt-4">
                 @*Popüler Ürünler*@
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="populer" id="populer" value="true">
+                    @if (ViewBag.populer == true)
+                    {
+                        <input class="form-check-input" type="checkbox" name="populer" id="populer" checked>
+                    }
+                    else
+                    {
+                        <input class="form-check-input" type="checkbox" name="populer" id="populer" unchecked>
+                    }
                     <label class="form-check-label" for="populer">Popüler Ürünler</label>
                 </div>
 
                 @*Json Link Ürünler*@
                 <div class="form-check mt-2">
-                    <input class="form-check-input" type="checkbox" name="json" id="jsonLink" value="true">
+                    @if (ViewBag.json == true)
+                    {
+                        <input class="form-check-input" type="checkbox" name="json" id="jsonLink" checked>
+                    }
+                    else
+                    {
+                        <input class="form-check-input" type="checkbox" name="json" id="jsonLink" unchecked>
+
+                    }
                     <label class="form-check-label" for="jsonLink">Json Link Ürünler</label>
                 </div>
                 @*Filtrele*@
@@ -46,7 +68,7 @@
             </div>
 
         </div>
-        <div class="row table-responsive text-start">
+        <div class="row table-responsive text-start mt-2">
             <table class="table table-striped table-hover table-bordered table-sm sortable" id="detayProductTable">
                 @*tablo başlığı*@
                 <thead>
@@ -55,8 +77,8 @@
                         <th scope="col">Ürün Adı</th>
                         <th scope="col">Marka</th>
                         <th scope="col">Başlangıç Tarihi</th>
-                        <th scope="col">İlk Stok</th>
                         <th scope="col">Bitiş Tarihi</th>
+                        <th scope="col">İlk Stok</th>
                         <th scope="col">Son Stok</th>
                         <th scope="col">Stok Farkı</th>
                         <th scope="col">Güncel Stok</th>
@@ -88,20 +110,20 @@
                 </tbody>
 
             </table>
-            <div>
-                <div class="ms-auto">
-                    Sayfalar:
-                    @for (int i = ViewBag.page - 3; i < ViewBag.page + 3; i++)
+
+        </div><div class="row">
+            <div class="ms-auto">
+                Sayfalar:
+                @for (int i = ViewBag.page - 3; i < ViewBag.page + 3; i++)
+                {
+                    if (i < 0)
                     {
-                        if (i<1)
-                        {
-                            continue;
-                        }
-                        <button value=@(i-1) name="page" class="btn btn-secondary btn-sm">@i</button>
+                        continue;
                     }
-                    ...
-                    <button value=@(ViewBag.totalPage-1) name="page" class="btn btn-secondary btn-sm">@ViewBag.totalPage</button>
-                </div>
+                    <button value=@(i) name="page" class="btn btn-secondary btn-sm">@(i + 1)</button>
+                }
+                ...
+                <button value=@(ViewBag.totalPage-1) name="page" class="btn btn-secondary btn-sm">@ViewBag.totalPage</button>
             </div>
         </div>
     </div>
