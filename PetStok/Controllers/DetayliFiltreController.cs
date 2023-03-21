@@ -14,7 +14,6 @@ namespace PetStok.Controllers
         public IActionResult Index()
         {
             return Filtrele();
-            //asd
         }
 
         public IActionResult Filtrele(bool json = false, bool populer = false, string ad = "hepsi", int page = 0, string barkod = "", DateTime? basTarih = null, DateTime? bitTarih = null)
