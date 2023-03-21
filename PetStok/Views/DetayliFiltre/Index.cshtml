@@ -70,6 +70,30 @@
             </div>
 
         </div>
+        <div class="row mt-2">
+            <div class="ms-auto">
+                Sayfalar:
+                @for (int i = ViewBag.page - 3; i < ViewBag.page + 3; i++)
+                {
+                    if (i < 0 || i > ViewBag.totalPage)
+                    {
+                        continue;
+                    }
+                    if (ViewBag.page == i)
+                    {
+                        <button value=@(i) name="page" class="btn btn-primary btn-sm">
+                            @(i + 1)
+                        </button>
+                    }
+                    else
+                    {
+                        <button value=@(i) name="page" class="btn btn-secondary btn-sm">@(i + 1)</button>
+                    }
+                }
+                ...
+                <button value=@ViewBag.totalPage name="page" class="btn btn-secondary btn-sm">@(ViewBag.totalPage + 1)</button>
+            </div>
+        </div>
         <div class="row table-responsive text-start mt-2">
             <table class="table table-striped table-hover table-bordered table-sm sortable" id="detayProductTable">
                 @*tablo başlığı*@
@@ -113,29 +137,6 @@
 
             </table>
 
-        </div><div class="row">
-            <div class="ms-auto">
-                Sayfalar:
-                @for (int i = ViewBag.page - 3; i < ViewBag.page + 3; i++)
-                {
-                    if (i < 0 || i > ViewBag.totalPage)
-                    {
-                        continue;
-                    }
-                    if (ViewBag.page == i)
-                    {
-                        <button value=@(i) name="page" class="btn btn-primary btn-sm">
-                            @(i + 1)
-                        </button>
-                    }
-                    else
-                    {
-                        <button value=@(i) name="page" class="btn btn-secondary btn-sm">@(i + 1)</button>
-                    }
-                }
-                ...
-                <button value=@ViewBag.totalPage name="page" class="btn btn-secondary btn-sm">@(ViewBag.totalPage + 1)</button>
-            </div>
         </div>
     </div>
 </form>
