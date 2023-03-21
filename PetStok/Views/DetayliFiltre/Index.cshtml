@@ -120,10 +120,19 @@
                     {
                         continue;
                     }
-                    <button value=@(i) name="page" class="btn btn-secondary btn-sm">@(i + 1)</button>
+                    if (ViewBag.page == i)
+                    {
+                        <button value=@(i) name="page" class="btn btn-primary btn-sm">
+                            @(i + 1)
+                        </button>
+                    }
+                    else
+                    {
+                        <button value=@(i) name="page" class="btn btn-secondary btn-sm">@(i + 1)</button>
+                    }
                 }
                 ...
-                <button value=@ViewBag.totalPage name="page" class="btn btn-secondary btn-sm">@(ViewBag.totalPage+1)</button>
+                <button value=@ViewBag.totalPage name="page" class="btn btn-secondary btn-sm">@(ViewBag.totalPage + 1)</button>
             </div>
         </div>
     </div>
