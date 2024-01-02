@@ -30,7 +30,7 @@ function indexBas() {
         method: 'GET',
         redirect: 'follow'
     };
-    fetch("http://193.53.103.155:8090/api/Genel/indexBas", requestOptions)
+    fetch("http://185.223.77.92:8090/api/Genel/indexBas", requestOptions)
         .then(response => response.text())
         .then(basariliToast())
         .catch(error => console.log('error', error));

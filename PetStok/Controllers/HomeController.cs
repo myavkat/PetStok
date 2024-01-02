@@ -66,7 +66,7 @@ namespace PetStok.Controllers
             //var myJsonString = System.IO.File.ReadAllText(jsonPath);
             //var products = JsonSerializer.Deserialize<List<Product>>(myJsonString);
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://193.53.103.155:8090");
+            client.BaseAddress = new Uri("http://185.223.77.92:8090");
             client.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("text/plain"));
             HttpResponseMessage response = client.GetAsync("/api/Genel/getUrunsdetay/" + text).Result;

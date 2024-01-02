@@ -27,7 +27,7 @@ namespace PetStok.Controllers
             StringContent stringContent = new StringContent(jsonStr, Encoding.UTF8, "application/json");
             using (HttpClient client = new())
             {
-                client.BaseAddress = new Uri("http://193.53.103.155:8090");
+                client.BaseAddress = new Uri("http://185.223.77.92:8090");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage dataResponse = client.PostAsync("/api/Genel/getJsonPopuler", stringContent).Result;
                 if (dataResponse.IsSuccessStatusCode)
