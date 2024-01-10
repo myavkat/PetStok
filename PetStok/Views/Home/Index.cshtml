@@ -38,12 +38,12 @@
                         <div class="row">    
                             @*Barkod girişi*@
                             <div class=" col-6">
-                            <input class="form-control form-control-dark" type="text" placeholder="Barkod Ara" name="barkod" id="barkodAra" value=@ViewBag.barkod>
+                                <input class="form-control form-control-dark" type="text" placeholder="Barkod veya Ürün Adı Ara" name="barkod" id="barkodAra" value=@ViewBag.barkod>
                             <input type="submit" hidden />
                             </div>
                             <div class="col-3">
                                 <button type="button" class="btn btn-primary" onclick="this.form.submit()">
-                                    Barkod Ara<div role="status" id="yukleniyor" class="spinner-border ms-1 spinner-border-sm"></div>
+                                    Barkod veya Ürün Adı Ara<div role="status" id="yukleniyor" class="spinner-border ms-1 spinner-border-sm"></div>
                                 </button>
                             </div>
                             <div class=" col-3">

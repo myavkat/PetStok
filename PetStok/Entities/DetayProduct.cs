@@ -11,12 +11,12 @@
         public string ad { get; set; }
         public string url { get; set; }
         public string barkod { get; set; }
-        public int stok { get; set; }
+        public int? stok { get; set; } //aa
         public double fiyat { get; set; }
         public DateTime? tarih { get; set; }
         public string urunAd { get; set; }
         public string stokList { get; set; }
-        public bool populer { get; set; }
+        public bool? populer { get; set; } // aa
         public int totalpage { get; set; }
 
     }
